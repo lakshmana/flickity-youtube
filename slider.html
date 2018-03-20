@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+Each YouTube video has 4 generated images. They are predictably formatted as follows:
+
+http://img.youtube.com/vi/<insert-youtube-video-id-here>/0.jpg
+http://img.youtube.com/vi/<insert-youtube-video-id-here>/1.jpg
+http://img.youtube.com/vi/<insert-youtube-video-id-here>/2.jpg
+http://img.youtube.com/vi/<insert-youtube-video-id-here>/3.jpg
+
+The first one in the list is a full size image and others are thumbnail images. The default thumbnail image (ie. one of 1.jpg, 2.jpg, 3.jpg) is:
+
+http://img.youtube.com/vi/<insert-youtube-video-id-here>/default.jpg
+
+For the high quality version of the thumbnail use a url similar to this:
+
+http://img.youtube.com/vi/<insert-youtube-video-id-here>/hqdefault.jpg
+
+There is also a medium quality version of the thumbnail, using a url similar to the HQ:
+
+http://img.youtube.com/vi/<insert-youtube-video-id-here>/mqdefault.jpg
+
+For the standard definition version of the thumbnail, use a url similar to this:
+
+http://img.youtube.com/vi/<insert-youtube-video-id-here>/sddefault.jpg
+
+For the maximum resolution version of the thumbnail use a url similar to this:
+
+http://img.youtube.com/vi/<insert-youtube-video-id-here>/maxresdefault.jpg
+-->
+<div class="main-carousel carousel">
+    <div class="carousel-cell"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" alt="orange tree" /></div>
+
+    <div class="carousel-cell carousel-cell--vdo" data-vdo='vogjd9rzUNQ'>
+        <!--<img src="https://img.youtube.com/vi/vogjd9rzUNQ/maxresdefault.jpg" alt="orange tree" />-->
+        <div class="carousel-cell__vid"></div>
+    </div>
+    <div class="carousel-cell carousel-cell--vdo" data-vdo='KDXOzr0GoA4'>
+        <!--<img src="https://img.youtube.com/vi/KDXOzr0GoA4/maxresdefault.jpg" alt="orange tree" />-->
+        <div class="carousel-cell__vid"></div>
+    </div>
+    <div class="carousel-cell carousel-cell--vdo" data-vdo='TBikbn5XJhg'>
+        <img src="https://img.youtube.com/vi/TBikbn5XJhg/maxresdefault.jpg" alt="orange tree" />
+        <div class="carousel-cell__vid"></div>
+    </div>
+
+
+    <div class="carousel-cell carousel-cell--vdo" data-vdo='pBH7PN4Vc_8'>
+        <img src="https://img.youtube.com/vi/pBH7PN4Vc_8/maxresdefault.jpg" alt="orange tree" />
+        <div class="carousel-cell__vid"></div>
+    </div>
+
+
+
+</div>
+
+<link rel="stylesheet" media="all" href="flickity.css" />
+<script src="flickity.pkgd.min.js"></script>
+
+<style>
+    /* external css: flickity.css */
+
+    * { box-sizing: border-box; }
+
+    body, html{
+        margin: 0;
+        padding: 0;
+    }
+
+    .flickity-button{
+        z-index: 2;
+    }
+    .carousel {
+        background: #EEE;
+        position:relative;
+        height: 100vh;
+    }
+
+    .carousel-cell{
+         width:70%;
+        height: 100%;
+        transform: translateY(60px);
+        transition-delay: 0.1s;
+        transition: transform 0.6s ease;
+    }
+
+    .carousel-cell.is-selected{
+        transform: translateY(0);
+    }
+
+    .carousel-cell:after,
+    .carousel-cell:before {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: transparent;
+        z-index: 1;
+        content: '';
+    }
+
+    .carousel-cell img{
+        width:100%;
+        height:auto;
+    }
+    .carousel-cell__vid{
+        position: absolute;
+        left: 0; top: 0;
+        width:100%;
+        height:100%;
+
+        /*opacity: 0;*/
+        transition-delay: 0.1s;
+        transition: opacity 0.6s ease;
+    }
+    .carousel-cell.is-selected .carousel-cell__vid{
+        opacity: 1;
+    }
+
+    .carousel-cell--vdo:before{
+        background: black;
+        transition: transform 0.6s ease;
+    }
+    .carousel-cell--vdo.playing:before{
+        transform: translateX(100%);
+    }
+</style>
+
+<script src="vdo.js"></script>
+<script src="run.js"></script>
+</body>
+</html>
